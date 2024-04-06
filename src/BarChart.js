@@ -22,6 +22,7 @@ class BarChart extends Component {
               }
             }
           }
+          
         },
         plotOptions: {
           bar: {
@@ -112,12 +113,12 @@ class BarChart extends Component {
         <div className="row">
           <div className="chart-container">
             <div className="chart">
-              <Chart
-                options={this.state.options}
-                series={this.state.series}
-                type="bar"
-                width="100%" // Set width to 100%
-                height="350"
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="bar"
+              width="100%" // Set width to 100%
+              height="500" // Increase the height of the chart
               />
             </div>
             <div className="tracker-tab">

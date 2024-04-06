@@ -12,11 +12,15 @@
   }
   
   .chart {
-    flex: 1; /* Occupy remaining space */
+    flex: 0.7; /* Occupy 70% of the space */
     margin-right: 10px; /* Add some margin between the chart and tracker tab */
   }
   
   .tracker-tab {
-    flex: 1; /* Occupy remaining space */
+    flex: 0.3; /* Occupy 30% of the space */
     margin-left: 10px; /* Add some margin between the chart and tracker tab */
+    overflow-y: auto; /* Enable scrolling when the content overflows */
+  }
+  .apexcharts-yaxis-label, .apexcharts-xaxis-label {
+    font-size: 12px !important; /* Increase the font size of the y-axis labels */
   }

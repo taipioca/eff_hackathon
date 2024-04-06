@@ -20,20 +20,11 @@
   width: -webkit-fill-available;
   margin-left: 3px;
 }
-.tracker-list {
-  margin-left: 100px;
-  margin-top: 20px;
-  overflow-y: scroll;
-  max-height: 23em;
-  width: 100%;
-  background-color: #adefd14f;
-  border-radius: 7px;
-  color: #00203fff;
-}
-.tab-content > .active {
+
+/* .tab-content > .active {
   display: block;
   margin-right: 100px !important;
-}
+} */
 
 .header {
   font-family: Montserrat, serif;
@@ -92,7 +83,7 @@
   background-color: red;
 }
 
-.text-for-tabs {
+/* .text-for-tabs {
   margin-left: 140px;
   background-color: #adefd14f;
   padding: 12px;
@@ -100,7 +91,7 @@
   margin-left: 40px;
   margin-right: -100px;
   color: #00203fff;
-}
+} */
 .header-tab {
   font-weight: bold !important;
   font-size: larger !important;
@@ -165,7 +156,7 @@ li {
 .App-link {
   color: #61dafb;
 }
-
+/* 
 #chart {
   border: 1px solid #ccc;
   padding: 0.5px;
@@ -216,7 +207,7 @@ li {
 .element {
   margin-bottom: -2px;
   font-size: 17px;
-}
+} */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

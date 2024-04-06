@@ -47,16 +47,10 @@ class App extends Component{
       <Router>
       <div className="App-header">
     <div className="container" style={{width: 800}}>
-        <h2 class="site_title">Visualizing trackers accross the web using Privacy Badger</h2>
+        <h2 class="site_title">Privacy Badger Tracker Visualization</h2>
         <br></br>
           <p>
-          Welcome!
-          <p></p>
-          Have you ever felt that the internet knows too much about you?
-          Or have you felt ads that have just been too invasive? We are here to help you
-          learn what the internet knows about you!
-          Upload your tracking data downloaded from this <a className="url" href="https://github.com/aryan096/privacybadger" >modified Privacy Badger extension</a> that accurately
-          captures information about trackers while you browse and we will help you understand!
+          Upload a file to get started:
           </p>
           <br></br>
           <div className="Upload">

@@ -1,12 +1,6 @@
 import React,{Component} from 'react';
-import "./App.css";
-import * as d3 from 'd3';
-import Alert from 'react-bootstrap/Alert'
-import onClickOutside from 'react-onclickoutside'
-import Tab from 'react-bootstrap/Tab'
-import Col from 'react-bootstrap/Col'
-import Nav from 'react-bootstrap/Nav'
-import Row from 'react-bootstrap/Row'
+import "./TrackerTab.css";
+var data = require('./data/data.json');
 
 // this imports the data file
 var data = require('./data/data.json');
@@ -51,26 +45,26 @@ function get_top_trackers() {
 
 
 class TrackerTab extends Component{
-
-  // The render function first gets the top trackers then renders the HTML for
-  // the tracker tab component
   render(){
     var trackers_list = get_top_trackers()
     var selectedSiteTrackers = this.props.selectedSite ? trackers_list.find(datas => datas[0] === this.props.selectedSite) : null;
 
     return (
       <div className="flex-container">
-        {selectedSiteTrackers && 
+        {selectedSiteTrackers ? 
           <div>
-            <h2>{selectedSiteTrackers[0]}</h2>
-            <ul class="tracker-list">
+            <h2>Website: {selectedSiteTrackers[0]}</h2>
+            <ul className="tracker-list">
               {selectedSiteTrackers[1].map(tracker =>
-                <li style={{listStyle: 'circle', marginLeft: '4px', marginTop: '2px', marginBottom: '2px'}}>{tracker}</li>
+                <li className="tracker-item">{tracker}</li>
               )}
             </ul>
           </div>
+          :
+          <div>
+            <h2>Select a site to view trackers</h2>
+          </div>
         }
-
       </div>
     )
   }

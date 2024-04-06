@@ -7,6 +7,7 @@ import Bubble from "./Bubble";
 import TrackerTab from "./TrackerTab";
 import "./Viz.css";
 var data = require("./data/data.json");
+import { Card, Text } from "@nextui-org/react";
 
 class Viz extends Component {
   /* This function returns the total number of trackers based on the info stored in the snitch_map
@@ -35,45 +36,28 @@ class Viz extends Component {
                 Click to go back{" "}
               </button>
             </a>
-            <hr></hr> Let's breakdown your data!
+            <hr></hr> Tracker Breakdown
           </h1>
           <br></br>
 
-          <Alert variant="danger">
-            We found a total of <b>{this.get_total_num_trackers()} trackers</b>{" "}
-            throughout your browsing data.<br></br>
-            Each tracker comes from a different top-level-domain.
-          </Alert>
-
           <br></br>
           <h4 class="header" style={{ marginBottom: 20 }}>
-            What websites track you the most?
+            Most Tracked Sites (Top 10)
           </h4>
-          <p>
-            You probably have A LOT of trackers peeping your activity. We will
-            first focus on the websites that track you the most.
-            <br></br>
-            <br></br>
-            The top 10 websites based on the number of trackers they had -{" "}
-          </p>
-            <BarChart />
-            {/* <TrackerTab /> */}
+          <Card css={{ mw: "400px" }}>
+            <Card.Body>
+              <BarChart />
+            </Card.Body>
+          </Card>
 
           <br></br>
           <br></br>
 
-          <p>
-            Next, it might be useful to look at the list of trackers for each of
-            these top tracking websites.
-          </p>
           <h4 class="header" style={{ marginBottom: 20 }}>
-            What trackers were on these websites?
+            Tracker Frequency
           </h4>
 
-          <div>
-            {" "}
-            {" "}
-          </div>
+          <div> </div>
 
           <br></br>
           <hr></hr>
