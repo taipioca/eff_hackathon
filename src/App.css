@@ -1,0 +1,229 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'), url(./fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Source_Sans_Pro';
+  src: local('Source_Sans_Pro'), url(./fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf) format('truetype');
+}
+
+
+.flex-container .row{
+  border: lightgray;
+  border-style: dotted;
+  border-width: thin;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+  margin-left: 3px;
+}
+.tracker-list{
+  margin-left: 100px;
+  margin-top: 20px;
+  overflow-y:scroll;
+  max-height: 23em;
+  width:100%;
+  background-color: #adefd14f;
+  border-radius: 7px;
+  color: #00203FFF;
+}
+.tab-content>.active {
+    display: block;
+    margin-right: 100px !important;
+}
+
+.header{
+  font-family: Montserrat, serif;
+}
+.viz-page {
+  font-family: Source_Sans_Pro, serif;
+  font-size: larger;
+  width: 780px;
+}
+
+.site_title {
+  font-family: Montserrat, serif;
+}
+
+.tracker_bubbles{
+  margin-top: 60px;
+}
+
+.alert-info{
+  font-size: 20px !important;
+
+}
+
+.viz-container {
+  margin-top: 30px;
+}
+
+.nav-link{
+  color: black;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.Upload{
+
+  border-color: #E5FFCC;
+  border-style: solid;
+  padding: 20px;
+  margin-bottom: 20px
+}
+.nav-pills .nav-link:active{
+  background-color: #ADEFD1FF !important;
+}
+.show>.nav-link{
+  background-color: red;
+}
+
+.text-for-tabs{
+  margin-left: 140px;
+  background-color: #adefd14f;
+  padding: 12px;
+  border-radius: 7px;
+  margin-left: 40px;
+  margin-right: -100px;
+  color: #00203FFF;
+}
+.header-tab{
+  font-weight: bold !important;
+  font-size: larger !important;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: #00203FFF !important;
+  color: white !important;
+}
+
+a.url{
+  color: #ccff99 !important;
+}
+
+a{
+  color: #00203FFF !important;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  font-family: Source_Sans_Pro, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(6px + 2vmin);
+  color: white;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: .2rem;
+    background: #313639;
+    color: #f9f9f9;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    font-size: .7rem;
+}
+
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #FF6666;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+
+}
+#container{
+  width: 600px;
+  margin-left: 50px;
+}
+
+.a{
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+li{
+  list-style-type:none;
+}
+.App-link {
+  color: #61dafb;
+}
+
+#chart {
+
+	border: 1px solid #CCC;
+  padding : 0.5px;
+}
+
+.bar {
+	shape-rendering: crispEdges;
+ padding: 10px;
+}
+
+.bar-label{
+  fill: #000;
+	text-anchor: middle;
+	font-size: 18px;
+  padding: 10px;
+}
+
+.label-text{
+  opacity: 1 !important;
+}
+.value-text{
+  margin-bottom: 10px !important;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.gridline path,
+.gridline line{
+	fill: none;
+	stroke: #ccc;
+	shape-rendering: crispEdges;
+}
+.tracker-list{
+  flex: 1;
+}
+
+.dropdown-toggle::after {
+transform: rotate(-90deg)
+}
+.flex-container{
+  display: flex;
+}
+.element{
+  margin-bottom: -2px;
+  font-size: 17px;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
