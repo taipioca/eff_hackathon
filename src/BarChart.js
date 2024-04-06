@@ -110,19 +110,25 @@ class BarChart extends Component {
     return (
       <div className="app">
         <div className="row">
-          <div className="mixed-chart">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="bar"
-              width="500"
-            />
-            <TrackerTab selectedSite={this.state.selectedSite} /> {/* Add TrackerTab as a child */}
+          <div className="chart-container">
+            <div className="chart">
+              <Chart
+                options={this.state.options}
+                series={this.state.series}
+                type="bar"
+                width="100%" // Set width to 100%
+                height="350"
+              />
+            </div>
+            <div className="tracker-tab">
+              <TrackerTab selectedSite={this.state.selectedSite} />
+            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+
 
 export default BarChart;

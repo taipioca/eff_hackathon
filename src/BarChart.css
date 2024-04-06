@@ -1,7 +1,22 @@
-.chart-container .apexcharts-gridline {
-  stroke: #fff;
-}
-/* 
-.tooltip {
-  padding: 10px;
-} */
+.apexcharts-gridline {
+    stroke: #fff;
+  }
+  
+  .tooltip {
+    padding: 10px;
+  }
+  
+  .chart-container {
+    display: flex;
+    width: 100%; /* This will make the container take up the full width of its parent */
+  }
+  
+  .chart {
+    flex: 1; /* Occupy remaining space */
+    margin-right: 10px; /* Add some margin between the chart and tracker tab */
+  }
+  
+  .tracker-tab {
+    flex: 1; /* Occupy remaining space */
+    margin-left: 10px; /* Add some margin between the chart and tracker tab */
+  }

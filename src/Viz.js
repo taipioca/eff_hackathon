@@ -56,10 +56,8 @@ class Viz extends Component {
             <br></br>
             The top 10 websites based on the number of trackers they had -{" "}
           </p>
-          <div className = "topsites-container">
             <BarChart />
             {/* <TrackerTab /> */}
-          </div>
 
           <br></br>
           <br></br>
