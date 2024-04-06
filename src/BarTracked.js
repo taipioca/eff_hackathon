@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 import data from "./data/data.json";
-import "./BarChart.css";
+import "./BarTracked.css";
 import TrackerTab from "./TrackerTab"; // Import TrackerTab
 
 class BarChart extends Component {

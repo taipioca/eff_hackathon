@@ -1,4 +1,8 @@
 .topsites-container {
-    display: flex;
-    justify-content: space-between;
-  }
+  display: flex;
+  justify-content: space-between;
+}
+
+body {
+  background-color: #F1F1F1;
+}

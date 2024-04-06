@@ -20,7 +20,11 @@
   width: -webkit-fill-available;
   margin-left: 3px;
 }
+.ant-card-body {
+  background-color: #ffffff; /* White color */
+  padding: 20px; /* Add padding */
 
+}
 /* .tab-content > .active {
   display: block;
   margin-right: 100px !important;
@@ -92,7 +96,7 @@
   margin-right: -100px;
   color: #00203fff;
 } */
-.header-tab {
+/* .header-tab {
   font-weight: bold !important;
   font-size: larger !important;
 }
@@ -100,7 +104,7 @@
 .nav-pills .show > .nav-link {
   background-color: #00203fff !important;
   color: white !important;
-}
+} */
 
 a.url {
   color: #ccff99 !important;

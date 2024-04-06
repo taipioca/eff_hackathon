@@ -46,7 +46,7 @@ class App extends Component{
 
       <Router>
       <div className="App-header">
-    <div className="container" style={{width: 800}}>
+    <div className="container" >
         <h2 class="site_title">Privacy Badger Tracker Visualization</h2>
         <br></br>
           <p>

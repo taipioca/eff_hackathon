@@ -1,8 +1,8 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
+import { List } from 'antd';
 import "./TrackerTab.css";
-var data = require('./data/data.json');
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-// this imports the data file
 var data = require('./data/data.json');
 
 /*
@@ -41,11 +41,8 @@ function get_top_trackers() {
 
   return sorted_snitches_top;
 
-}
-
-
-class TrackerTab extends Component{
-  render(){
+}class TrackerTab extends Component {
+  render() {
     var trackers_list = get_top_trackers()
     var selectedSiteTrackers = this.props.selectedSite ? trackers_list.find(datas => datas[0] === this.props.selectedSite) : null;
 
@@ -54,11 +51,34 @@ class TrackerTab extends Component{
         {selectedSiteTrackers ? 
           <div>
             <h2>Website: {selectedSiteTrackers[0]}</h2>
-            <ul className="tracker-list">
-              {selectedSiteTrackers[1].map(tracker =>
-                <li className="tracker-item">{tracker}</li>
-              )}
-            </ul>
+            <div
+              id="scrollableDiv"
+              style={{
+                height: 400,
+                overflow: 'auto',
+                padding: '0 16px',
+                border: '1px solid rgba(140, 140, 140, 0.35)',
+              }}
+            >
+              <InfiniteScroll
+                dataLength={selectedSiteTrackers[1].length}
+                next={() => {}}
+                hasMore={false}
+                loader={<h4>Loading...</h4>}
+                scrollableTarget="scrollableDiv"
+              >
+                <List
+                  dataSource={selectedSiteTrackers[1]}
+                  renderItem={tracker => (
+                    <List.Item>
+                      <List.Item.Meta
+                        title={tracker}
+                      />
+                    </List.Item>
+                  )}
+                />
+              </InfiniteScroll>
+            </div>
           </div>
           :
           <div>
