@@ -3,7 +3,8 @@ import { Card } from 'antd';
 import "./App.css";
 import * as d3 from "d3";
 import Alert from "react-bootstrap/Alert";
-import BarChart from "./BarTracked";
+import BarTracked from "./BarTracked";
+import BarFreq from "./BarFreq";
 import "./Viz.css";
 var data = require("./data/data.json");
 
@@ -40,15 +41,14 @@ class Viz extends Component {
 
           <br></br>
           <Card title="Most Tracked Sites (Top 10)" bordered={false}>
-            <BarChart />
+            <BarTracked />
           </Card>
 
           <br></br>
           <br></br>
-
-          <Card title="Tracker Frequency" bordered={false}>
-            {/* Tracker Frequency content goes here */}
-          </Card>
+          <Card title="Tracker Types" bordered={false} className="tracker-types-card">
+  <BarFreq />
+</Card>
 
           <div> </div>
 

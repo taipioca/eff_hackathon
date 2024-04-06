@@ -75,8 +75,6 @@
 }
 
 .Upload {
-  border-color: #e5ffcc;
-  border-style: solid;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -114,7 +112,7 @@ a {
   color: #00203fff !important;
 }
 .App-header {
-  background-color: #282c34;
+  background-color: #f1f1f1;
   min-height: 100vh;
   font-family: Source_Sans_Pro, serif;
   display: flex;
@@ -122,7 +120,7 @@ a {
   align-items: center;
   justify-content: center;
   font-size: calc(6px + 2vmin);
-  color: white;
+  color: rgb(27, 27, 27);
 }
 
 div.tooltip {
