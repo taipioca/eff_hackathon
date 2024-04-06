@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import "./App.css";
 import * as d3 from 'd3';
 import Alert from 'react-bootstrap/Alert'
-import  BarChart from './BarChart';
 import onClickOutside from 'react-onclickoutside'
 import Tab from 'react-bootstrap/Tab'
 import Col from 'react-bootstrap/Col'
@@ -57,42 +56,21 @@ class TrackerTab extends Component{
   // the tracker tab component
   render(){
     var trackers_list = get_top_trackers()
+    var selectedSiteTrackers = this.props.selectedSite ? trackers_list.find(datas => datas[0] === this.props.selectedSite) : null;
 
     return (
       <div className="flex-container">
-        <Tab.Container id="tracker-tabs" defaultActiveKey="first">
-          <Row class="tracker-list-box">
-            <Col sm={3}>
-              <Nav variant="pills" className="flex-column">
-                <Nav.Item>
-                  <Nav.Link variant="primary" className="header-tab" eventKey="first">Website</Nav.Link>
-                </Nav.Item>
-                {trackers_list.map(datas =>
-                  <Nav.Item>
-                    <Nav.Link variant="primary" eventKey={datas[0]}>{datas[0]}</Nav.Link>
-                  </Nav.Item>
-                )}
-              </Nav>
-            </Col>
-            <Col sm={8}>
-              <Tab.Content>
-                <Tab.Pane eventKey="first">
-                  <p className="text-for-tabs"> Click on a tab to view a scrollable list of the trackers on that website!
-                  </p>
-                </Tab.Pane>
-                {trackers_list.map(datas =>
-                  <Tab.Pane eventKey={datas[0]}>
-                    <ul class="tracker-list">
-                      {datas[1].map(tracker =>
-                        <li style={{listStyle: 'circle', marginLeft: '4px', marginTop: '2px', marginBottom: '2px'}}>{tracker}</li>
-                      )}
-                    </ul>
-                  </Tab.Pane>
-                )}
-              </Tab.Content>
-            </Col>
-          </Row>
-        </Tab.Container>
+        {selectedSiteTrackers && 
+          <div>
+            <h2>{selectedSiteTrackers[0]}</h2>
+            <ul class="tracker-list">
+              {selectedSiteTrackers[1].map(tracker =>
+                <li style={{listStyle: 'circle', marginLeft: '4px', marginTop: '2px', marginBottom: '2px'}}>{tracker}</li>
+              )}
+            </ul>
+          </div>
+        }
+
       </div>
     )
   }
