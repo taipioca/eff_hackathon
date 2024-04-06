@@ -68,10 +68,10 @@ class Viz extends Component {
             What trackers were on these websites?
           </h4>
 
-          {/* <div>
+          <div>
             {' '}
             <TrackerTab />{' '}
-          </div> */}
+          </div>
           <div>
             {' '}
             <Categorization />{' '}

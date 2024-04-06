@@ -44,7 +44,7 @@ function get_top_trackers() {
 // Creat a new list with website and the Categorization result from Klazify API
 let site_categorization;
 
-function updateTrackerData() {
+async function updateTrackerData() {
   let tracker_data = get_top_trackers();
 
   // This is the settings for API call to Klazify
@@ -57,7 +57,7 @@ function updateTrackerData() {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization:
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGJlNmRiMTM3MmM0M2Y4Y2UwMGYxOWUzNDkwMWE3MzdiNjlmODg1OTY0ZGIyZWZhMjhiYmZjMDk1YjVjMzY5NzU3ZmY5YmUxNDA0NzRjM2IiLCJpYXQiOjE3MTIzNzU4NDYuNTYzMzExLCJuYmYiOjE3MTIzNzU4NDYuNTYzMzEzLCJleHAiOjE3NDM5MTE4NDYuNTU2MzE1LCJzdWIiOiIxMjIwMCIsInNjb3BlcyI6W119.LKRg2geTOJiYqPpa2JVf3eaMF6y682c9ydPrd0iT1mmf-h-XWvUW5CzEgyOBBrxVwfN1S4PW4xOsc4gN-4pmpGWVgvfmOhVqSR3ZZs4qkiLdS86eP09-u8ICIWUT0UqLajnc7GUY5PiyXNpFGSqkJ_5i2nPyAyb7o0eBXKfw8R3BrxlP7c2_fB2Sg9qefV8IoUSuvRZpJQlWvA7knmbota7WISo0tXeMJjDKt6eRMJBHDAt2CD8vGhChO75gvE_6_AeoEkOyg3nc9SgDp_05ppUgSEkyMxvLx3BGueBWWvgeyZgK6SxhAA9G6P9es6AE_ZwFuLR664wkLrj7XL-ZiUsP3bY-4tRadJomgkP0IBbOkKruSD_Y9-DY6GyyLsj9znMkVgvhkIlgmGJftzAmyKYW0FfICntTzCd637Sc0rGN0hKi73tGGwGPjHhOgxuDxixdv1e5uMinfLaDEdvjA7GYRK6o0PAAripAk8YOiXRzXkCcV51e8ZHrVnMj5yMa0WoteF9-2WNufE1uPBcZdncO0NbXovp3Z9LkK29pYhcNcLvj5rFzQU0jyTO8swgsblcMgZP8ch4IKO_T8QvOgJFcjvUwGtllPpZEfFHFQ6b76fMmdKl7I7keHerisIKQzhBsiJWNZLzbujT_aZRvMNq9HhmwE8CsBLSTsorREFw',
+        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODEyZTdmNTk0ODY2NTkwNmQ0ZjAwYjU3ZGFjZWI0ZDczOTA3Y2JkNTM4ZDMxOGQ2YmNkOTc2MDQ3ZmFkYjAxNzEwNzllOTNlNzZmZjVjYzMiLCJpYXQiOjE3MTI0NDE2ODkuMDQ1MDI2LCJuYmYiOjE3MTI0NDE2ODkuMDQ1MDI3LCJleHAiOjE3NDM5Nzc2ODkuMDMzNTU4LCJzdWIiOiIxMjIwMSIsInNjb3BlcyI6W119.NGpt7jq-WK-wYzfthS4gfEOn7ky8WnnGYDwEXs0TetSr352Nl4RZ2iOHRl9mAnQ22NIG4K10WXVco8e5IH2uPVkK9gXi-K7mLUkdMkbkWrnY7gMPrbnldnIZcwW7S4CjxFA5lUklcYoTWsgKYzdd2MTMi_xg2GrK1asxuBc5nYysnU_dXpJnrhCNHQZa4mvlAPMgr3xg0wgQemnqzI05KISUx0SZNrAu4FaNpBfPKgyq_Wya0JRf_UZwlA96s1hIsuBjJ7PUSvBsESdGlErTc4XZJ6KrlS0FQnl6QAqGyu2hIIrrgXlwrdOsZWJ3VhMNp1FQW79xPEBRe6kgasb9pu2izn2FsRKQKDiwO7oY68erMgYypA4aO763_pbQUksRY0RKU9ZF6gTVXdutL-ZYnIdQ586SYRQVucIvxkJ7OZJhj5xS_HptyJT9Ce-YsMJeihkkVtE5w4GshZ4YM0aCne839gMOFLTUB18bw1shjI0ZBNbw5z739rexJ6j9AYWIR5nPaTShsc-C7baIUxmhqKsaWLlqlYpaMTZoNGxRX5sZCBtELRXx2h-6-grpG2rCJjX5uUCu7cGvI-vq6aFzvk6ijDB-SSjiuRacLMozFXMoKPa7gJ1RP1X6JkfcfO8pKW7ODrrj7h0XHQCwYSGnXk2JODMosGQu1WJh1wY13xo',
       'cache-control': 'no-cache',
       // 'User-Agent': 'telnet',
     },
@@ -65,28 +65,33 @@ function updateTrackerData() {
     data: '{"url":"http://www.amazon.com"}',
   };
 
+  let site_cat_list = [];
   for (let i = 0; i < tracker_data.length; i++) {
+    site_cat_list[i] = [];
+    site_cat_list[i][0] = tracker_data[i][0];
     let firstElement = 'http://www.' + tracker_data[i][0];
     settings.data = JSON.stringify({ url: firstElement });
 
-    $.ajax(settings).done(function (response) {
-      tracker_data[i][1] = response.domain.categories[0].name;
+    await $.ajax(settings).done(function (response) {
+      site_cat_list[i][1] = response.domain.categories[0].name;
       console.log('trackers_data:', tracker_data);
+      console.log('site_cat_list:', site_cat_list);
     });
   }
-  return tracker_data;
+  return site_cat_list;
 }
 
+const cat_data = await updateTrackerData();
+console.log('updated_trackers_data:', cat_data);
+
+localStorage.setItem('tracker_data', JSON.stringify(cat_data));
+
+// Retrieve tracker_data from localStorage
+const cat_data_retrieve = JSON.parse(localStorage.getItem('tracker_data'));
+console.log('retrieved_trackers_data:', cat_data_retrieve);
+
 class Categorization extends Component {
-  // The render function first gets the top trackers then renders the HTML for
-  // the tracker tab component
   render() {
-    // var site_categorization = get_top_trackers();
-    // console.log('site_categorization:', site_categorization);
-    // let site_categorization = await updateTrackerData();
-    // console.log('site_categorization2:', site_categorization);
-    var result = updateTrackerData();
-    console.log('updated_trackers_data:', result);
     return <div></div>;
   }
 }
