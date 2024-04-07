@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button } from "antd";
+import { Card, Row, Col, Button } from "antd";
 import { UploadOutlined } from '@ant-design/icons';
 import "./App.css";
 import * as d3 from "d3";
@@ -9,6 +9,8 @@ import BarFreq from "./BarFreq";
 import "./Viz.css";
 import UploadModal from "./UploadModal"; // Import the UploadComponent
 import Summary from "./Summary";
+import { withRouter } from 'react-router-dom';
+
 var data = require("./data/data.json");
 
 
@@ -52,6 +54,7 @@ class Viz extends Component {
         </Card>
 
         <br></br>
+        <div className="bottom-container">
         <Card
           title="Tracker Types"
           bordered={false}
@@ -59,6 +62,15 @@ class Viz extends Component {
         >
           <BarFreq />
         </Card>
+
+        <Card
+  title="What Types of Sites are Trackers On?"
+  bordered={false}
+  onClick={() => this.props.history.push('/categorization')}
+>
+  <p> click me </p>
+</Card>
+      </div>
 
         {this.state.isUploadModalOpen && (
           <UploadModal onClose={this.closeUploadModal} />
@@ -68,4 +80,4 @@ class Viz extends Component {
   }
 }
 
-export default Viz;
+export default withRouter(Viz);
