@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UploadModal from "./UploadModal";
-import { Button } from 'antd';
+import { Button } from "antd";
 
 class App extends Component {
   constructor(props) {
@@ -28,36 +27,41 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App-header">
-          <div className="container">
-            <h2 class="site_title">Privacy Badger Tracker Visualization</h2>
-            <Button type="primary" onClick={this.openUploadModal}>
-              Upload a file to get started!
-            </Button>
-            {this.state.isUploadModalOpen && (
-              <UploadModal 
-                onSuccessfulUpload={this.handleSuccessfulUpload} 
-                onClose={this.closeUploadModal}
-              />
-            )}
-            <button
-              type="button"
-              class="btn btn-success btn-block"
-              style={{ backgroundColor: "#FF6666", borderColor: "#FF6666" }}
-              disabled={!this.state.isUploaded}
-            >
-              <a href="/viz" style={{ textDecoration: "none" }}>
-                <button
-                  type="button"
-                  class="btn btn-success btn-block"
-                  style={{ backgroundColor: "#FF6666", borderColor: "#FF6666" }}
-                >
-                  Show Analytics
-                </button>
-              </a>
-            </button>
-          </div>
+      <div className="App-header">
+        <div className="home-container">
+          <h2 className="site_title">Privacy Badger Tracker Visualization</h2>
+          <p className="description">
+  Visualize canvas fingerprinting data from the Privacy Badger with
+  powerful analytic tools to protect from non-consensual commercial
+  surveillance online. Learn more about EFF at https://www.eff.org/
+  and learn more about Privacy Badger at https://privacybadger.org/.
+</p>
+          <Button
+            type="primary"
+            onClick={this.openUploadModal}
+            shape="round"
+            className="start-button"
+          >
+            Start Here
+          </Button>
+          {this.state.isUploadModalOpen && (
+            <UploadModal
+              onSuccessfulUpload={this.handleSuccessfulUpload}
+              onClose={this.closeUploadModal}
+            />
+          )}
         </div>
+        {this.state.isUploaded && (
+          <div className="analytics-container">
+            <Button
+              onClick={() => (window.location.href = "/analytics")}
+              className="analytics-button"
+            >
+              Launch Analytics
+            </Button>
+          </div>
+        )}
+      </div>
     );
   }
 }

@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Chart from "react-apexcharts";
 import data from "./data/data.json";
 import "./BarTracked.css";
-import TrackerTab from "./TrackerTab"; // Import TrackerTab
 
 class PieChart extends Component {
+  
+  // Create a pie chart
   constructor(props) {
     super(props);
 
@@ -13,32 +14,46 @@ class PieChart extends Component {
     this.state = {
       options: {
         chart: {
-          width: '100%',
-          type: 'pie',
+          width: "100%",
+          type: "pie",
         },
         labels: sorted_snitches_top.map((d) => d[0]),
         theme: {
           monochrome: {
-            enabled: true
-          }
+            enabled: false, 
+          },
         },
+        colors: ["#4DA7FF", "#6E90FF", "#856FFF", "#B37FFF", "#70AFFF"],
         plotOptions: {
           pie: {
             dataLabels: {
-              offset: -5
-            }
-          }
+              offset: -5,
+            },
+          },
         },
-
         dataLabels: {
+          dropShadow: {
+            enabled: true,
+            top: 1,
+            left: 1,
+            right: 1,
+            bottom: 1,
+            blur: 0.5,
+            opacity: 0.8,
+            color: "#2A3FA4",
+          },
+          style: {
+            fontSize: "14px",
+            fontWeight: "normal", 
+          },
           formatter(val, opts) {
-            const name = opts.w.globals.labels[opts.seriesIndex]
-            return [name, val.toFixed(1) + '%']
-          }
+            const name = opts.w.globals.labels[opts.seriesIndex];
+            return [name, val.toFixed(1) + "%"];
+          },
         },
         legend: {
-          show: false
-        }
+          show: false,
+        },
       },
       series: sorted_snitches_top.map((d) => d[1]),
     };
@@ -74,7 +89,11 @@ class PieChart extends Component {
   render() {
     return (
       <div id="chart">
-        <Chart options={this.state.options} series={this.state.series} type="pie" />
+        <Chart
+          options={this.state.options}
+          series={this.state.series}
+          type="pie"
+        />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Chart from "react-apexcharts";
 import data from "./data/data.json";
 import "./BarTracked.css";
-import TrackerTab from "./TrackerTab"; // Import TrackerTab
+import TrackerTab from "./TrackerTab";
 
 class BarChart extends Component {
   constructor(props) {
@@ -12,22 +12,36 @@ class BarChart extends Component {
 
     this.state = {
       options: {
+        colors: [
+          // Colors for the bar graph
+          "#2294F6",
+          "#2A8AEF",
+          "#3280E7",
+          "#3977E0",
+          "#416DD9",
+          "#4964D2",
+          "#515ACC",
+          "#5941C5",
+          "#6138BE",
+          "#8446DB",
+        ],
+
         chart: {
           type: "bar",
           height: 350,
           events: {
             click: (event, chartContext, config) => {
-              if (config && config.hasOwnProperty('dataPointIndex')) {
-                this.handleBarClick(config.dataPointIndex);
+              if (config && config.hasOwnProperty("dataPointIndex")) {
+                this.handleBarClick(config.dataPointIndex); // Handle the click event on the bar graph
               }
-            }
-          }
-          
+            },
+          },
         },
         plotOptions: {
           bar: {
             borderRadius: 4,
             horizontal: true,
+            distributed: true,
           },
         },
         dataLabels: {
@@ -36,20 +50,23 @@ class BarChart extends Component {
         xaxis: {
           categories: sorted_snitches_top.map((d) => d[0]),
           title: {
-            text: "Number of Trackers", // Label the horizontal axis
+            text: "Number of Trackers",
           },
         },
         grid: {
-          show: true, // This will show the grid lines
-          borderColor: "#fff", // This will make the grid lines white
+          show: true,
+          borderColor: "#fff",
         },
         yaxis: {
           labels: {
-            show: true, // This will show the y-axis labels
+            show: true,
           },
           axisBorder: {
-            show: false, // This will hide the y-axis border
+            show: false,
           },
+        },
+        legend: {
+          show: false,
         },
         tooltip: {
           custom: function ({ series, seriesIndex, dataPointIndex, w }) {
@@ -105,7 +122,7 @@ class BarChart extends Component {
     if (index >= 0 && index < sorted_snitches_top.length) {
       this.setState({ selectedSite: sorted_snitches_top[index][0] });
     }
-  }
+  };
 
   render() {
     return (
@@ -113,12 +130,12 @@ class BarChart extends Component {
         <div className="row">
           <div className="chart-container">
             <div className="chart">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="bar"
-              width="100%" // Set width to 100%
-              height="500" // Increase the height of the chart
+              <Chart
+                options={this.state.options}
+                series={this.state.series}
+                type="bar"
+                width="100%"
+                height="500"
               />
             </div>
             <div className="tracker-tab">
@@ -130,6 +147,5 @@ class BarChart extends Component {
     );
   }
 }
-
 
 export default BarChart;

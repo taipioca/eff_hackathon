@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Card } from "antd";
 import data from "./data/data.json";
 import "./Summary.css";
-import calendarImage from "./images/calendar.jpg"; // Import the image
-import fingerprintImage from "./images/fingerprint.png"; // Import the image
-import keyImage from "./images/key.jpg"; // Import the image
+import calendarImage from "./images/calendar.jpg";
+import fingerprintImage from "./images/fingerprint.png";
+import keyImage from "./images/key.jpg";
 
 class Summary extends Component {
   getUniqueWebsites() {
@@ -31,6 +31,7 @@ class Summary extends Component {
   render() {
     return (
       <div className="summary-container">
+        {/* Card for number of Unique websites visited */}
         <Card className=" tracker-types-card summary-card">
           <div className="card-content">
             <img src={keyImage} alt="Key" className="card-image" />{" "}
@@ -41,6 +42,7 @@ class Summary extends Component {
           </div>
         </Card>
 
+        {/* Card for number of unique trackers */}
         <Card className=" tracker-types-card summary-card">
           <div className="card-content">
             <img
@@ -55,6 +57,7 @@ class Summary extends Component {
           </div>
         </Card>
 
+        {/* Card for date of the file uploaded */}
         <Card className="tracker-types-card summary-card">
           <div className="card-content">
             <img src={calendarImage} alt="Calendar" className="card-image" />{" "}

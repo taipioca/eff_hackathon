@@ -3,6 +3,7 @@ import "./App.css";
 import $ from "jquery";
 import ReactDOM from "react-dom";
 import ReactApexChart from "react-apexcharts";
+import "./Categorization.css";
 // this imports the data file
 var data = require("./data/data.json");
 
@@ -13,7 +14,7 @@ function get_top_trackers() {
   var snitches = {};
 
   // Variable for Top __ websites with trackers on different websites
-  var top_num = 10;
+  var top_num = 15;
   // populate the snitches dict from the snitch_map
   for (let tracker in data["snitch_map"]) {
     var websites = data["snitch_map"][tracker];
@@ -42,12 +43,8 @@ function get_top_trackers() {
   return sorted_snitches_top;
 }
 
-// Creat a new list with website and the Categorization result from Klazify API
+// Create a new list with website and the Categorization result from Klazify API
 let site_categorization;
-
-//console.log("updated_trackers_data:", cat_data);
-
-//localStorage.setItem("tracker_data", JSON.stringify(cat_data));
 
 // Retrieve tracker_data from localStorage
 const cat_data_retrieve = JSON.parse(localStorage.getItem("tracker_data"));
@@ -60,21 +57,29 @@ class Categorization extends Component {
       series: [],
       options: {
         colors: [
-          "#1f77b4",
-          "#ff7f0e",
-          "#2ca02c",
-          "#d62728",
-          "#9467bd",
-          "#8c564b",
-          "#e377c2",
-          "#7f7f7f",
-          "#bcbd22",
-          "#17becf",
+          "#52A5EC",
+          "#3C3DA5",
+          "#8446DB",
+          "#2E86C1", // Deep Blue
+          "#8E44AD", // Rich Purple
+          "#3498DB", // Bright Blue
+          "#9B59B6", // Vibrant Purple
+          "#2980B9", // Royal Blue
+          "#AF7AC5", // Lavender
+          "#154360", // Dark Blue
         ],
+
+        dataLabels: {
+          style: {
+            fontSize: "20px",
+            wordWrap: "break-word",
+            width: "100px",
+          },
+        },
         legend: {
-          show: true, // Show the legend
-          fontSize: "12px", // Customize font size if needed
-          position: "bottom", // Position the legend at the bottom
+          show: false,
+          fontSize: "12px",
+          position: "bottom",
           formatter: function (seriesName, opts) {
             // Retrieve the color for the current series
             const color = opts.w.globals.fill.colors[opts.seriesIndex];
@@ -86,10 +91,6 @@ class Categorization extends Component {
         chart: {
           height: 350,
           type: "treemap",
-        },
-        title: {
-          text: "What Types of Sites are Trackers on?",
-          align: "center",
         },
       },
     };
@@ -127,7 +128,14 @@ class Categorization extends Component {
       promises.push(
         new Promise((resolve, reject) => {
           $.ajax(settings).done((response) => {
-            let site_cat = response.domain.categories[0].name;
+            let site_cat = "Unknown";
+            if (
+              response.domain &&
+              response.domain.categories &&
+              response.domain.categories.length > 0
+            ) {
+              site_cat = response.domain.categories[0].name;
+            }
             resolve([tracker_data[i][0], site_cat]);
           });
         })
@@ -172,17 +180,26 @@ class Categorization extends Component {
     const { series, options } = this.state;
 
     return (
-      <div>
-        <div id="chart">
+      <div className="chart-container">
+        <div className="legend">
+          {series.map((s, i) => (
+            <div key={i} className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: options.colors[i] }}
+              ></span>
+              <span className="legend-label">{s.name}</span>
+            </div>
+          ))}
+        </div>
+        <div className="chart">
           <ReactApexChart
             options={options}
             series={series}
             type="treemap"
             height={350}
-            width = {500}
           />
         </div>
-        <div id="html-dist"></div>
       </div>
     );
   }

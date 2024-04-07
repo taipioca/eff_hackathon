@@ -10,7 +10,7 @@
   
   .summary-container .ant-card:not(:last-child) {
     flex: 1;
-    margin-right: 20px; /* Add right margin to all cards except the last one */
+    margin-right: 20px;
   }
   
   .summary-container .ant-card:last-child {
@@ -18,14 +18,14 @@
   }
 
 .summary-card h2 {
-  font-size: 2em; /* Make the title a big number */
-  font-weight: bold; /* Make the title bolded */
+  font-size: 2em;
+  font-weight: bold; 
 }
 
 .summary-card p {
-  font-size: 1.2em; /* Make the description only slightly bigger */
-  color: gray; /* Make the description gray color */
-  font-weight: bold; /* Make the description bolded */
+  font-size: 1.2em;
+  color: gray;
+  font-weight: bold; 
 }
 .card-content {
     display: flex;

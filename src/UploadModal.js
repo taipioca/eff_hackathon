@@ -1,34 +1,48 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Upload, Button, message, Modal } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import React, { Component } from "react";
+import axios from "axios";
+import { Upload, Button, message, Modal } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 
 class UploadComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      msg: 'Upload',
+      msg: "Upload",
       isDisabled: false,
       selectedFile: null,
     };
   }
 
   onChangeHandler = (event) => {
-    this.setState({
-      selectedFile: event.target.files[0],
-      loaded: 0,
-    });
+    const file = event.target.files[0];
+    const isJson = file.type === "application/json";
+    if (!isJson) {
+      message.error("Please upload a JSON file.");
+    } else {
+      this.setState({
+        selectedFile: file,
+        loaded: 0,
+        isJsonSelected: true, // Set to true when a JSON file is selected
+      });
+    }
   };
 
   onClickHandler = () => {
     this.setState({
-      msg: 'Uploaded!',
+      msg: "Uploading...",
       isDisabled: true,
     });
     const data = new FormData();
-    data.append('file', this.state.selectedFile);
-    axios.post('http://localhost:8000/upload', data).then((res) => {
+    data.append("file", this.state.selectedFile);
+    axios.post("http://localhost:8000/upload", data).then((res) => {
       console.log(res.statusText);
+      this.setState({
+        msg: "Uploaded!",
+      });
+      message.success("Upload Successful!", 3); // Show success message
+      if (typeof this.props.onSuccessfulUpload === "function") {
+        this.props.onSuccessfulUpload(); // Notify parent component of successful upload
+      }
       this.props.onClose(); // Close the modal when the upload is complete
     });
   };
@@ -38,7 +52,7 @@ class UploadComponent extends Component {
   };
 
   render() {
-    const { msg, isDisabled } = this.state;
+    const { msg, isDisabled, isJsonSelected } = this.state; // Add isJsonSelected
     return (
       <Modal
         title="Upload a file to get started:"
@@ -46,13 +60,13 @@ class UploadComponent extends Component {
         onCancel={this.handleCancel}
         footer={[
           <Button key="back" onClick={this.handleCancel}>
-            Return
+            Cancel
           </Button>,
           <Button
             key="upload"
             type="primary"
             onClick={this.onClickHandler}
-            disabled={isDisabled}
+            disabled={isDisabled || !isJsonSelected} // Disable the button if a JSON file is not selected
           >
             {msg}
           </Button>,
@@ -60,11 +74,7 @@ class UploadComponent extends Component {
       >
         <form method="post" action="#" id="#">
           <div className="form-group files">
-            <input
-              type="file"
-              name="file"
-              onChange={this.onChangeHandler}
-            />
+            <input type="file" name="file" onChange={this.onChangeHandler} />
           </div>
         </form>
       </Modal>

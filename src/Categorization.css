@@ -1,0 +1,28 @@
+.chart-container {
+    display: flex;
+  }
+  
+  .legend {
+    flex: 0.3; 
+    padding: 10px;
+    display: flex; 
+    margin-top: 50px;
+    align-items: left;
+    flex-direction: column; 
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .chart {
+    flex: 0.7; 
+  }

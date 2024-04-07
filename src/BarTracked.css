@@ -8,22 +8,24 @@
 
 .chart-container {
   display: flex;
-  width: 100%; /* This will make the container take up the full width of its parent */
-  padding: 20px; /* Add padding */
+  width: 100%;
+  padding: 20px;
 }
-
 .chart {
-  flex: 0.7; /* Occupy 60% of the space */
-  margin-right: 15px; /* Add some margin between the chart and tracker tab */
+  flex: 0.7;
+  margin-right: 15px;
 }
 
 .tracker-tab {
-  flex: 0.3; /* Occupy 40% of the space */
-  margin-left: 5%; /* Add some margin between the chart and tracker tab */
-  overflow-y: auto; /* Enable scrolling when the content overflows */
+  flex: 0.3;
+  margin-left: 15px;
+  overflow-y: auto;
 }
 
 .apexcharts-yaxis-label,
-.apexcharts-xaxis-label {
-  font-size: 12px !important; /* Increase the font size of the y-axis labels */
+
+.apexcharts-title-text {
+  font-size: 12px !important;
+  font-weight: 600 !important; 
+  font-family: 'Helvetica', sans-serif !important;
 }

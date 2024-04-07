@@ -1,30 +1,30 @@
 .tracker-list {
-    list-style: none;
-    margin-left: 4px;
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-    overflow-y: scroll;
-    overflow-x: hidden; /* Hide any content that overflows the left and right edges */
-    max-height: 20em;
-    width: 100%;
-    background-color: #ffffff4f;
-    border-radius: 7px;
-    color: #00203fff;
-  }
-  
-  .tracker-item {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    border-bottom: 1px solid #ccc;
-    padding: 5px 0;
-    font-size: 0.8em; /* Adjust the font size of the trackers */
-  }
-  
-  h2 {
-    font-size: 1em; /* Adjust the font size of the site title */
-    margin-bottom: 10px;
-  }
-  
-  .flex-container {
-    background-color: #fff; /* Change the background color to white */
-  }
+  list-style: none;
+  margin-left: 4px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  margin-top: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 20em;
+  width: 100%;
+  background-color: #ffffff4f;
+  color: #00203fff;
+}
+
+.tracker-item {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+  font-size: 0.8em;
+}
+
+h2 {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+.flex-container {
+  background-color: #fff;
+}
