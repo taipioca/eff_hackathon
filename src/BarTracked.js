@@ -17,12 +17,11 @@ class BarChart extends Component {
           height: 350,
           events: {
             click: (event, chartContext, config) => {
-              if (config && config.hasOwnProperty('dataPointIndex')) {
+              if (config && config.hasOwnProperty("dataPointIndex")) {
                 this.handleBarClick(config.dataPointIndex);
               }
-            }
-          }
-          
+            },
+          },
         },
         plotOptions: {
           bar: {
@@ -45,6 +44,10 @@ class BarChart extends Component {
         },
         yaxis: {
           labels: {
+            offsetX: 40, // Move the labels 40px to the right
+            style: {
+              fontSize: "12px", // Set the font size of the labels
+            },
             show: true, // This will show the y-axis labels
           },
           axisBorder: {
@@ -105,7 +108,7 @@ class BarChart extends Component {
     if (index >= 0 && index < sorted_snitches_top.length) {
       this.setState({ selectedSite: sorted_snitches_top[index][0] });
     }
-  }
+  };
 
   render() {
     return (
@@ -113,12 +116,12 @@ class BarChart extends Component {
         <div className="row">
           <div className="chart-container">
             <div className="chart">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="bar"
-              width="100%" // Set width to 100%
-              height="500" // Increase the height of the chart
+              <Chart
+                options={this.state.options}
+                series={this.state.series}
+                type="bar"
+                width="100%" // Set width to 100%
+                height="500" // Increase the height of the chart
               />
             </div>
             <div className="tracker-tab">
@@ -130,6 +133,5 @@ class BarChart extends Component {
     );
   }
 }
-
 
 export default BarChart;
