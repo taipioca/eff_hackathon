@@ -29,13 +29,14 @@ class App extends Component {
     return (
       <div className="App-header">
         <div className="home-container">
-          <h2 className="site_title">Privacy Badger Tracker Visualization</h2>
+          <h2 className="site_title">PrivyProbe</h2>
           <p className="description">
-  Visualize canvas fingerprinting data from the Privacy Badger with
-  powerful analytic tools to protect from non-consensual commercial
-  surveillance online. Learn more about EFF at https://www.eff.org/
-  and learn more about Privacy Badger at https://privacybadger.org/.
-</p>
+            Visualize canvas fingerprinting and tracking data from the Privacy
+            Badger with powerful analytic tools to protect from non-consensual
+            commercial surveillance online. Learn more about EFF at
+            https://www.eff.org/ and learn more about Privacy Badger at
+            https://privacybadger.org/.
+          </p>
           <Button
             type="primary"
             onClick={this.openUploadModal}
