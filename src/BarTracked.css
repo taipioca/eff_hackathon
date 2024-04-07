@@ -1,26 +1,29 @@
 .apexcharts-gridline {
-    stroke: #fff;
-  }
-  
-  .tooltip {
-    padding: 10px;
-  }
-  
-  .chart-container {
-    display: flex;
-    width: 100%; /* This will make the container take up the full width of its parent */
-  }
-  
-  .chart {
-    flex: 0.7; /* Occupy 70% of the space */
-    margin-right: 15px; /* Add some margin between the chart and tracker tab */
-  }
-  
-  .tracker-tab {
-    flex: 0.3; /* Occupy 30% of the space */
-    margin-left: 5%; /* Add some margin between the chart and tracker tab */
-    overflow-y: auto; /* Enable scrolling when the content overflows */
-  }
-  .apexcharts-yaxis-label, .apexcharts-xaxis-label {
-    font-size: 12px !important; /* Increase the font size of the y-axis labels */
-  }
+  stroke: #fff;
+}
+
+.tooltip {
+  padding: 10px;
+}
+
+.chart-container {
+  display: flex;
+  width: 100%; /* This will make the container take up the full width of its parent */
+  padding: 20px; /* Add padding */
+}
+
+.chart {
+  flex: 0.7; /* Occupy 60% of the space */
+  margin-right: 15px; /* Add some margin between the chart and tracker tab */
+}
+
+.tracker-tab {
+  flex: 0.3; /* Occupy 40% of the space */
+  margin-left: 5%; /* Add some margin between the chart and tracker tab */
+  overflow-y: auto; /* Enable scrolling when the content overflows */
+}
+
+.apexcharts-yaxis-label,
+.apexcharts-xaxis-label {
+  font-size: 12px !important; /* Increase the font size of the y-axis labels */
+}

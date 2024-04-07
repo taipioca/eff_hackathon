@@ -1,62 +1,68 @@
 import React, { Component } from "react";
-import { Card } from 'antd';
+import { Card, Button } from "antd";
+import { UploadOutlined } from '@ant-design/icons';
 import "./App.css";
 import * as d3 from "d3";
 import Alert from "react-bootstrap/Alert";
 import BarTracked from "./BarTracked";
 import BarFreq from "./BarFreq";
 import "./Viz.css";
+import UploadModal from "./UploadModal"; // Import the UploadComponent
+import Summary from "./Summary";
 var data = require("./data/data.json");
 
+
 class Viz extends Component {
-  /* This function returns the total number of trackers based on the info stored in the snitch_map
-     each key in the snitch map refers to the top level domain of a tracker
-  */
+  state = {
+    isUploadModalOpen: false,
+  };
+
   get_total_num_trackers() {
     var total_num = Object.keys(data["snitch_map"]).length;
     return total_num;
   }
 
+  openUploadModal = () => {
+    this.setState({ isUploadModalOpen: true });
+  };
+
+  closeUploadModal = () => {
+    this.setState({ isUploadModalOpen: false });
+  };
+
   render() {
     return (
-      <div className="container viz-container">
-        <div className="viz-page">
-          <h1 class="header">
-            <a href="/" style={{ textDecoration: "none" }}>
-              <button
-                type="button"
-                className="btn"
-                style={{
-                  backgroundColor: "#00203FFF",
-                  borderColor: "none",
-                  color: "white",
-                }}
-              >
-                Click to go back{" "}
-              </button>
-            </a>
-            <hr></hr> Tracker Breakdown
-          </h1>
-          <br></br>
-
-          <br></br>
-          <Card title="Most Tracked Sites (Top 10)" bordered={false}>
-            <BarTracked />
-          </Card>
-
-          <br></br>
-          <br></br>
-          <Card title="Tracker Types" bordered={false} className="tracker-types-card">
-  <BarFreq />
-</Card>
-
-          <div> </div>
-
-          <br></br>
-          <hr></hr>
-          <br></br>
-
+      <div className="viz-container">
+        <h1 class="header">Let's Break this Down</h1>
+        <div className="upload-button-container">
+          <Button 
+            className="upload-button"
+            icon={<UploadOutlined />} 
+            onClick={this.openUploadModal} // Open the upload modal when the button is clicked
+          >
+            Upload a new file
+          </Button>
+          
         </div>
+        <br></br>
+          <Summary />
+          <br></br>
+        <Card title="Most Tracked Sites (Top 10)" bordered={false} >
+          <BarTracked />
+        </Card>
+
+        <br></br>
+        <Card
+          title="Tracker Types"
+          bordered={false}
+          className="tracker-types-card"
+        >
+          <BarFreq />
+        </Card>
+
+        {this.state.isUploadModalOpen && (
+          <UploadModal onClose={this.closeUploadModal} />
+        )}
       </div>
     );
   }
